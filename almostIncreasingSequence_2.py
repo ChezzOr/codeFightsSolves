@@ -7,22 +7,18 @@ def almostIncreasingSequence(sequence):
     lastValue = pivot
     dictionary = {pivot:1}
     for idx, x in enumerate(sequence[1:]):
-        '''print("Val: " + str(x))
-        print("Piv: " + str(pivot))
-        print("-----------------")'''
         
         if x in dictionary.keys():
             dictionary.update({x:2})
+            values = dictionary.values()
+            rep = 0
+            for val in values:
+                if val == 2:
+                    rep += 1
+                if rep > 1:
+                    return False
         else:
             dictionary.update({x:1})
-        values = dictionary.values()
-
-        rep = 0
-        for val in values:
-            if val == 2:
-                rep += 1
-            if rep > 1:
-                return False
         
         if x > pivot and x > lastValue:
             lastValue = pivot
